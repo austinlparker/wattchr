@@ -8,5 +8,4 @@ router.post('/xml', function(req, res) {
 	});
 });
 
-router.listen(8000);
 module.exports = router;

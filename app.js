@@ -4,6 +4,8 @@ var favicon = require('static-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var builder = require('xmlbuilder');
+var xmlparser = require('express-xml-bodyparser');
 
 var mongo = require('mongoskin');
 var db = mongo.db("mongodb://localhost:27017/wattchr", {native_parser:true});
@@ -30,7 +32,6 @@ app.use(function(req,res,next){
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/post', post);
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
