@@ -35,8 +35,19 @@ router.post('/activation', xmlparser({trim: false, explicitArray: false}), funct
 			return console.log('insert error', err);
 		}
 	});
-	res.writeHead(200, {'Content-Type': 'application/xml'} );
+	res.writeHead(0, {'Content-Type': 'application/xml'} );
 	res.end(activation_response);
+});
+
+/* POST data */
+
+router.post('/postdata', xmlparser({trim: false, explicitArray: false, strict: false}), function(req, res, next){
+	// var data = req.body;
+	// var db = req.db;
+
+	// var entry = { gateway: }
+	console.log(req.body);
+	res.send(200);
 });
 
 module.exports = router;
