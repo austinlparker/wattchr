@@ -2,19 +2,20 @@ extends layout
 
 block content
 	h1= title
-	p wattchr test
 
-	p Select A Gateway
-	#selectionDropdown
-		select
+	#wrapper
 
-	input(type = "button", value = "submit", id = "selectionButton")
+		#dropdownSelect
+			p Select A Gateway
+			#selectionDropdown
+				select(id = "selectors")
 
-	h2 Gateways
-	#gatewayList
-		table
-			thead
-				th gid
-				th timestamp
-				th watts
-			tbody
+			input(type = "button", value = "submit", id = "selectionButton")
+
+		#gatewayList
+			table
+				thead
+					th gid
+					th timestamp
+					th watts
+				tbody

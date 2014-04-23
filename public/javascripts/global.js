@@ -42,5 +42,5 @@ function populateTable(value) {
 
 function convertEpoch(timestamp) {
 	var date = new Date(timestamp*1000);
-	return (date.toGMTString() + date.toLocaleString());
+	return (date.toLocaleString());
 }
