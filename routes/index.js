@@ -6,7 +6,7 @@ var util = require('util');
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Express' });
+  res.render('index', { title: 'wattchr' });
 });
 
 /* GET hello world */
@@ -57,7 +57,7 @@ router.post('/postdata', xmlparser({trim: false, explicitArray: false, strict: f
 			return console.log('insert error', err);
 		}
 	});
-	
+
   	console.log(entry);
 	console.log(util.inspect(data, false, null));
 	res.send(200);
