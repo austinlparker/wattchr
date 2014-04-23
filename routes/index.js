@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var xmlparser = require('express-xml-bodyparser');
 var builder = require('xmlbuilder');
+var util = require('util');
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -42,14 +43,24 @@ router.post('/activation', xmlparser({trim: false, explicitArray: false}), funct
 /* POST data */
 
 router.post('/postdata', xmlparser({trim: false, explicitArray: false, strict: false}), function(req, res, next){
-	// var data = req.body;
-	// var db = req.db;
+	var data = req.body;
+	var db = req.db;
 
-	// var entry = { gateway: }
-	console.log(req.body);
+	var entry = { 
+		gateway: data['TED5000'].$.GWID, 
+		timestamp: data['TED5000'].MTU.CUMULATIVE.$.TIMESTAMP,
+		watts: data['TED5000'].MTU.CUMULATIVE.$.WATTS
+	  }
+
+	db.collection('gateways').insert(entry, function(err) {
+		if(err) {
+			return console.log('insert error', err);
+		}
+	});
+	
+  	console.log(entry);
+	console.log(util.inspect(data, false, null));
 	res.send(200);
 });
 
 module.exports = router;
-
-
